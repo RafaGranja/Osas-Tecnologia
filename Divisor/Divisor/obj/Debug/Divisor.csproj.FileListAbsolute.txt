@@ -1,0 +1,8 @@
+C:\Desenvolvimento\Osas Tecnologia\Divisor\Divisor\bin\Debug\Divisor.exe.config
+C:\Desenvolvimento\Osas Tecnologia\Divisor\Divisor\bin\Debug\Divisor.exe
+C:\Desenvolvimento\Osas Tecnologia\Divisor\Divisor\bin\Debug\Divisor.pdb
+C:\Desenvolvimento\Osas Tecnologia\Divisor\Divisor\obj\Debug\Divisor.csproj.AssemblyReference.cache
+C:\Desenvolvimento\Osas Tecnologia\Divisor\Divisor\obj\Debug\Divisor.csproj.SuggestedBindingRedirects.cache
+C:\Desenvolvimento\Osas Tecnologia\Divisor\Divisor\obj\Debug\Divisor.csproj.CoreCompileInputs.cache
+C:\Desenvolvimento\Osas Tecnologia\Divisor\Divisor\obj\Debug\Divisor.exe
+C:\Desenvolvimento\Osas Tecnologia\Divisor\Divisor\obj\Debug\Divisor.pdb
