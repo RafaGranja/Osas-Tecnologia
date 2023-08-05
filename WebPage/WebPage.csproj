@@ -120,10 +120,21 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Models\Entidades\DataClasses\Default.cs" />
+    <Compile Include="Models\Entidades\DataClasses\Films.cs" />
+    <Compile Include="Models\Entidades\Interfaces\InterfaceSWAPI.cs" />
+    <Compile Include="Models\Entidades\Interfaces\InterfacePageList.cs" />
+    <Compile Include="Models\Entidades\DataClasses\People.cs" />
+    <Compile Include="Models\Entidades\DataClasses\Planets.cs" />
+    <Compile Include="Models\Entidades\DataClasses\Root.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\Entidades\DataClasses\Species.cs" />
+    <Compile Include="Models\Entidades\DataClasses\Starships.cs" />
+    <Compile Include="Models\Entidades\DataClasses\Vehicles.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,7 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -208,9 +218,6 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Entidades.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

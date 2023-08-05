@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Entidades;
 
-namespace WebPage
+namespace Models
 {
-    public class Class1
+    public class HomeModel
     {
+
+        public  Root root { get; set; }
+
     }
 }
