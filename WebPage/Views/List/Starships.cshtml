@@ -1,0 +1,10 @@
+@model Models.ListStarshipsModel
+@{
+    ViewBag.Title = "Contact";
+}
+
+
+@foreach (var prop in @Model.root.results)
+{
+    <p>@prop.url</p>
+}

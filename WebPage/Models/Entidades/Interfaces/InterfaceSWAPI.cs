@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -13,23 +14,46 @@ namespace Interfaces
     {
         private string base_url {get;set;}
 
+        private HttpClient http;
+        
+
         public SWAPI(string base_url)
         {
                 
             this.base_url = base_url;
 
+            this.http = new HttpClient();
+
+            this.http.Timeout= TimeSpan.FromSeconds(120);
+
+            Console.WriteLine("Url da lista é:"+this.base_url);
+
+
         }
 
         public async Task<T> call(int id)
         {
+            string url = this.base_url + "/" + id;
 
-            HttpClient http = new HttpClient();
-
-            var response = await http.GetAsync($"{this.base_url}/{id}");
+            var response = await http.GetAsync(url);
 
             var json = await response.Content.ReadAsStringAsync();
 
-            var ret = JsonConvert.DeserializeObject<T>(json);
+            T ret = JsonConvert.DeserializeObject<T>(json);
+
+            return ret;
+
+        }
+
+        public async Task<T> callPage(int id)
+        {
+            string url = this.base_url + "/?page=" + id;
+
+            var response = await http.GetAsync(url);
+
+            var json = await response.Content.ReadAsStringAsync();
+
+            T ret = JsonConvert.DeserializeObject<T>(json);
 
             return ret;
 
@@ -38,13 +62,24 @@ namespace Interfaces
         public async Task<T> call()
         {
 
-            HttpClient http = new HttpClient();
-
-            var response = await http.GetAsync($"{this.base_url}");
+            var response = await http.GetAsync(this.base_url);
 
             var json = await response.Content.ReadAsStringAsync();
 
-            var ret = JsonConvert.DeserializeObject<T>(json);
+            T ret = JsonConvert.DeserializeObject<T>(json);
+
+            return ret;
+
+        }
+
+        public async Task<T> call(string url)
+        {
+
+            var response = await http.GetAsync(url);
+
+            var json = await response.Content.ReadAsStringAsync();
+
+            T ret = JsonConvert.DeserializeObject<T>(json);
 
             return ret;
 
@@ -57,10 +92,9 @@ namespace Interfaces
 
             for(int i = 0; i < id.Length; i++)
             {
+                string url = this.base_url + "/" + id[i];
 
-                HttpClient http = new HttpClient();
-
-                var response = await http.GetAsync($"{this.base_url}/{id[i]}");
+                var response = await http.GetAsync(url);
 
                 var json = await response.Content.ReadAsStringAsync();
 
@@ -80,9 +114,7 @@ namespace Interfaces
             for (int i = 0; i < url.Length; i++)
             {
 
-                HttpClient http = new HttpClient();
-
-                var response = await http.GetAsync($"{url[i]}");
+                var response = await http.GetAsync(url[i]);
 
                 var json = await response.Content.ReadAsStringAsync();
 

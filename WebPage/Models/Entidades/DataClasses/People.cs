@@ -10,6 +10,8 @@ namespace Entidades
 
         private const string base_url = "https://swapi.dev/api/people";
 
+        private const string img_url = "https://starwars-visualguide.com/assets/img/characters";
+
         public string name { get; set; }
 
         public string birth_year { get; set; }
@@ -30,15 +32,21 @@ namespace Entidades
 
         public string[] films { get; set; }
 
-
         public string[] species { get; set; }
-
 
         public string[] starships { get; set; }
 
         public string[] vehicles { get; set; }
 
         public Interfaces.SWAPI<People> API = new Interfaces.SWAPI<People>(base_url);
+        public string getImage()
+        {
+            var splited = this.url.Split('/');
 
+            int id = int.Parse(splited[splited.Length - 2]);
+
+            return $"{img_url}/{id}.jpg";
+
+        }
     }
 }

@@ -1,0 +1,108 @@
+﻿@model Models.HomeModel
+@{
+    ViewBag.Title = "Home Page";
+
+}
+<main>
+
+    <div class="cards-flex">
+
+        <a class="cards films" href="@Url.Action("Films", "List")">
+
+            <div class="div-img">
+                <img src="https://cdn.wallpapersafari.com/90/82/ag5V6t.jpg" />
+            </div>
+            <section class="div-details">
+
+                <hgroup>
+                    <h3>Filmes</h3>
+                </hgroup>
+                <p>Uma jornada cinematográfica além das estrelas. Star Wars: Emocionando galáxias com histórias épicas.</p>
+
+            </section>
+
+        </a>
+
+        <a class="cards people" href="@Url.Action("People", "List")">
+
+            <div class="div-img">
+                <img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/10/19/13/tfa_poster_wide_header-1536x864-959818851016.jpg" />
+            </div>
+            <section class="div-details">
+
+                <hgroup>
+                    <h3>Personagens</h3>
+                </hgroup>
+                <p>Heróis e vilões, unidos pela Força. Star Wars: Onde destinos se entrelaçam.</p>
+
+            </section>
+
+        </a>
+
+        <a class="cards planets" href="@Url.Action("Planets", "List")">
+
+            <div class="div-img">
+                <img src="https://e0.pxfuel.com/wallpapers/410/904/desktop-wallpaper-star-wars-death-star-artwork-sci-fi-stars-1960-x-1080.jpg" />
+            </div>
+            <section class="div-details">
+
+                <hgroup>
+                    <h3>Planetas</h3>
+                </hgroup>
+                <p>Mundos únicos, aventuras ilimitadas. Star Wars: Descubra galáxias através dos planetas.</p>
+
+            </section>
+
+        </a>
+
+        <a class="cards species"  href="@Url.Action("Species", "List")">
+
+            <div class="div-img">
+                <img src="https://w0.peakpx.com/wallpaper/968/888/HD-wallpaper-yoda-movie-fiction-force-jedi-big-ears-star-wars-film-science-fiction-geen-man-cute-green-alien.jpg" />
+            </div>
+            <section class="div-details">
+
+                <hgroup>
+                    <h3>Especies</h3>
+                </hgroup>
+                <p>Diversidade que transcende os confins da Terra. Star Wars: Um mosaico de espécies e culturas.</p>
+
+            </section>
+
+        </a>
+
+        <a class="cards starships" href="@Url.Action("Starships", "List")">
+
+            <div class="div-img">
+                <img src="https://i.pinimg.com/originals/bc/8e/da/bc8eda437408f5fe7543665843e8b218.jpg" />
+            </div>
+            <section class="div-details">
+
+                <hgroup>
+                    <h3>Naves espaciais</h3>
+                </hgroup>
+                <p>Navegando pelo cosmos, estrela a estrela. Star Wars: Naves que conduzem lendas.</p>
+
+            </section>
+
+        </a>
+
+        <a class="cards vehicles" href="@Url.Action("Vehicles", "List")">
+
+            <div class="div-img">
+                <img src="https://wallpaperaccess.com/full/503772.jpg" />
+            </div>
+            <section class="div-details">
+
+                <hgroup>
+                    <h3>Veiculos</h3>
+                </hgroup>
+                <p>Da terra ao espaço, ação em cada roda. Star Wars: A aventura em movimento.</p>
+
+            </section>
+
+        </a>
+
+    </div>
+   
+</main>
