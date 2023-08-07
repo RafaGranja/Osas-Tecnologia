@@ -1,0 +1,8 @@
+C:\Desenvolvimento\Osas Tecnologia\ServiceDivisor\bin\Debug\ServiceDivisor.exe.config
+C:\Desenvolvimento\Osas Tecnologia\ServiceDivisor\bin\Debug\ServiceDivisor.exe
+C:\Desenvolvimento\Osas Tecnologia\ServiceDivisor\bin\Debug\ServiceDivisor.pdb
+C:\Desenvolvimento\Osas Tecnologia\ServiceDivisor\obj\Debug\ServiceDivisor.csproj.AssemblyReference.cache
+C:\Desenvolvimento\Osas Tecnologia\ServiceDivisor\obj\Debug\ServiceDivisor.csproj.SuggestedBindingRedirects.cache
+C:\Desenvolvimento\Osas Tecnologia\ServiceDivisor\obj\Debug\ServiceDivisor.csproj.CoreCompileInputs.cache
+C:\Desenvolvimento\Osas Tecnologia\ServiceDivisor\obj\Debug\ServiceDivisor.exe
+C:\Desenvolvimento\Osas Tecnologia\ServiceDivisor\obj\Debug\ServiceDivisor.pdb
