@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Entidades
@@ -10,7 +11,7 @@ namespace Entidades
 
         private const string base_url = "https://swapi.dev/api/planets";
 
-        private const string img_url = "https://starwars-visualguide.com/assets/img/planets";
+        public new string img_url = "https://starwars-visualguide.com/assets/img/planets";
 
         public string name { get; set; }
 
@@ -35,14 +36,27 @@ namespace Entidades
         public string[] films { get; set; }
 
         public Interfaces.SWAPI<Planets> API = new Interfaces.SWAPI<Planets>(base_url);
+
         public string getImage()
         {
             var splited = this.url.Split('/');
 
             int id = int.Parse(splited[splited.Length - 2]);
 
-            return $"{img_url}/{id}.jpg";
+            bool ver = VerificarExistenciaImagem($"{img_url}/{id}.jpg");
 
+            if (ver)
+            {
+
+                return $"{img_url}/{id}.jpg";
+
+            }
+            else
+            {
+
+                return this.default_img;
+
+            }
         }
     }
 }

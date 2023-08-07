@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Models\DetailModel.cs" />
     <Compile Include="Models\Entidades\Interfaces\InterfaceDetailPage.cs" />
@@ -140,6 +141,12 @@
     </Compile>
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Views\Detail\Films.cshtml" />
+    <Content Include="Views\Detail\People.cshtml" />
+    <Content Include="Views\Detail\Planets.cshtml" />
+    <Content Include="Views\Detail\Species.cshtml" />
+    <Content Include="Views\Detail\Starships.cshtml" />
+    <Content Include="Views\Detail\Vehicles.cshtml" />
     <None Include="Views\Shared\Erro.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +166,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Loader.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -189,7 +197,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\Home\Root.cshtml" />
     <Content Include="Views\List\Films.cshtml" />
     <Content Include="Views\List\People.cshtml" />

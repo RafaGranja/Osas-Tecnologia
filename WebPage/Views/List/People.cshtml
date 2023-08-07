@@ -6,16 +6,16 @@
 @if (Model.root.previous != null || Model.root.next != null)
 {
 
-    <nav aria-label="Page navigation example">
+    <nav class="navigation">
         <ul class="pagination">
             @if (Model.root.previous != null)
             {
-                <li class="page-item"><a class="page-link" href="@Url.Action("People", "List", new {id = Model.root.previous.Split('=')[1]})">Anterior</a></li>
+                <li class="page-item"><a class="page-link" href="@Url.Action("People", "List", new {id = Model.root.previous.Split('=')[1]})">Previous</a></li>
 
             }
             @if (Model.root.next != null)
             {
-                <li class="page-item"><a class="page-link" href="@Url.Action("People", "List", new {id = Model.root.next.Split('=')[1]})">Próximo</a></li>
+                <li class="page-item"><a class="page-link" href="@Url.Action("People", "List", new {id = Model.root.next.Split('=')[1]})">Next</a></li>
 
             }
         </ul>

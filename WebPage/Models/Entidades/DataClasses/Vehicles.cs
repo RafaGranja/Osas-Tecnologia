@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Entidades
@@ -10,7 +11,7 @@ namespace Entidades
 
         private const string base_url = "https://swapi.dev/api/vehicles";
 
-        private const string img_url = "https://starwars-visualguide.com/assets/img/vehicles";
+        public new string img_url = "https://starwars-visualguide.com/assets/img/vehicles";
 
         public string name { get; set; }
 
@@ -46,8 +47,21 @@ namespace Entidades
 
             int id = int.Parse(splited[splited.Length - 2]);
 
-            return $"{img_url}/{id}.jpg";
+            bool ver = VerificarExistenciaImagem($"{img_url}/{id}.jpg");
 
+            if (ver)
+            {
+
+                return $"{img_url}/{id}.jpg";
+
+            }
+            else
+            {
+
+                return this.default_img;
+
+            }
         }
+
     }
 }

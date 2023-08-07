@@ -3,8 +3,51 @@
     ViewBag.Title = "Contact";
 }
 
-
-@foreach (var prop in @Model.root.results)
+@if (Model.root.previous != null || Model.root.next != null)
 {
-    <p>@prop.url</p>
+
+    <nav class="navigation">
+        <ul class="pagination">
+            @if (Model.root.previous != null)
+            {
+                <li class="page-item"><a class="page-link" href="@Url.Action("Starships", "List", new {id = Model.root.previous.Split('=')[1]})">Previous</a></li>
+
+            }
+            @if (Model.root.next != null)
+            {
+                <li class="page-item"><a class="page-link" href="@Url.Action("Starships", "List", new {id = Model.root.next.Split('=')[1]})">Next</a></li>
+
+            }
+        </ul>
+    </nav>
+
 }
+
+<div class="cards-flex">
+
+    @foreach (Entidades.Starships prop in @Model.root.results)
+    {
+
+        <a class="cards films" href="@Url.Action("Starships", "Detail", new {id = @prop.url.Split('/')[@prop.url.Split('/').Length-2]})">
+
+            <div class="div-img">
+                <img class="people" src="@prop.default_img" />
+            </div>
+            <section class="div-details">
+
+                <hgroup>
+                    <h3>@prop.name</h3>
+                    <h4>Model : @Entidades.StringExtensions.FirstCharToUpper(@prop.model)</h4>
+                    <h4>Starship class : @Entidades.StringExtensions.FirstCharToUpper(@prop.starship_class)</h4>
+                </hgroup>
+                <p>Manufacturer: @Entidades.StringExtensions.FirstCharToUpper(@prop.manufacturer)</p>
+                <p>Cost: @prop.cost_in_credits credits</p>
+                <p>Passengers: @prop.passengers </p>
+                <p>Cargo capacity: @prop.cargo_capacity </p>
+
+            </section>
+
+        </a>
+    }
+
+</div>

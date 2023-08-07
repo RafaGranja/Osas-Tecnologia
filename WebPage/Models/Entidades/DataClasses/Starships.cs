@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Entidades
@@ -9,7 +10,7 @@ namespace Entidades
     {
         private const string base_url = "https://swapi.dev/api/starships";
 
-        private const string img_url = "https://starwars-visualguide.com/assets/img/starships";
+        public new string img_url = "https://starwars-visualguide.com/assets/img/starships";
 
         public string starship_class { get; set; }
 
@@ -18,14 +19,28 @@ namespace Entidades
         public string MGLT { get; set; }
         
         public new Interfaces.SWAPI<Starships> API = new Interfaces.SWAPI<Starships>(base_url);
-        public string getImage()
+
+        public new string getImage()
         {
             var splited = this.url.Split('/');
 
             int id = int.Parse(splited[splited.Length - 2]);
 
-            return $"{img_url}/{id}.jpg";
+            bool ver = VerificarExistenciaImagem($"{img_url}/{id}.jpg");
 
+            if (ver)
+            {
+
+                return $"{img_url}/{id}.jpg";
+
+            }
+            else
+            {
+
+                return this.default_img;
+
+            }
         }
+
     }
 }

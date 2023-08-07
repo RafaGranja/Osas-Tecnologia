@@ -39,6 +39,7 @@ namespace Controllers
 
             }
 
+
             return View(listModel);
 
         }
@@ -56,13 +57,16 @@ namespace Controllers
             {
 
                 listModel.root = await listModel.root.API.call();
+            
             }
-            foreach (People item in listModel.root.results)
+
+            foreach(People item in listModel.root.results)
             {
 
                 item.default_img = item.getImage();
 
             }
+
             return View(listModel);
 
         }
@@ -80,12 +84,15 @@ namespace Controllers
 
                 listModel.root = await listModel.root.API.call();
             }
+
+
             foreach (Planets item in listModel.root.results)
             {
 
                 item.default_img = item.getImage();
 
             }
+
             return View(listModel);
 
         }

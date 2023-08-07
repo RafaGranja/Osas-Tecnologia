@@ -36,7 +36,25 @@ namespace Entidades
 
         public string default_img = "https://t4.ftcdn.net/jpg/04/99/93/31/360_F_499933117_ZAUBfv3P1HEOsZDrnkbNCt4jc3AodArl.jpg";
 
+        public string img_url = "https://t4.ftcdn.net/jpg/04/99/93/31/360_F_499933117_ZAUBfv3P1HEOsZDrnkbNCt4jc3AodArl.jpg";
+
+        public static bool VerificarExistenciaImagem(string imageUrl)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    using (var stream = client.OpenRead(imageUrl))
+                    {
+                        return true; 
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return false; 
+            }
+        }
 
     }
-
 }

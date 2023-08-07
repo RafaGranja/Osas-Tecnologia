@@ -1,0 +1,105 @@
+@model Models.DetailModelPlanets
+@{
+    ViewBag.Title = "Planets";
+}
+
+<h2 class="title">@Model.root.name</h2>
+
+<div class="card-detail">
+    <div class="div-img-detail">
+        <img src="@Model.root.default_img" />
+    </div>
+    <div class="div-details-d">
+        <table>
+
+            @foreach (System.Reflection.PropertyInfo propriedade in Model.root.GetType().GetProperties())
+            {
+                string nomePropriedade = @Entidades.StringExtensions.FirstCharToUpper(propriedade.Name.Replace('_', ' '));
+                object valorPropriedade = propriedade.GetValue(Model.root);
+
+                <tr>
+                    @if (nomePropriedade != null && valorPropriedade != null)
+                    {
+                        if (nomePropriedade != "Species"
+                        && nomePropriedade != "Starships"
+                        && nomePropriedade != "Vehicles"
+                        && nomePropriedade != "Species"
+                        && nomePropriedade != "Characters"
+                        && nomePropriedade != "Planets"
+                        && nomePropriedade != "Url"
+                        && nomePropriedade != "Created"
+                        && nomePropriedade != "Edited"
+                        && nomePropriedade != "Release date"
+                        && nomePropriedade != "Title"
+                        && nomePropriedade != "Films"
+                        && valorPropriedade.ToString().IndexOf("System.String[]") == -1
+                           && valorPropriedade.ToString().ToLower().IndexOf("https://swapi.dev") == -1)
+                        {
+                            if (valorPropriedade != null)
+                            {
+                                valorPropriedade = Entidades.StringExtensions.FirstCharToUpper(valorPropriedade.ToString());
+                            }
+                            <td>@nomePropriedade</td>
+                            <td>@valorPropriedade</td>
+
+                        }
+                        else if (nomePropriedade == "Release date")
+                        {
+                            <td>@nomePropriedade</td>
+                            <td>@DateTime.ParseExact(valorPropriedade.ToString(), "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture).ToString().Split(' ')[0]</td>
+
+                        }
+                    }
+                    </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="accordion" id="accordion">
+
+    <div class="accordion-item">
+        <div class="accordion-header" id="heading1">
+            <h5 class="mb-0">
+                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-controls="collapse1">
+                    Residents
+                </button>
+            </h5>
+        </div>
+        <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1">
+            <div class="accordion-body">
+                @foreach (Entidades.People prop in @Model.residents)
+                {
+                    <a href="@Url.Action("People", "Detail", new {id = @prop.url.Split('/')[@prop.url.Split('/').Length-2]})">
+
+                        <span><img src="@prop.getImage()" /></span>
+                        <p>@prop.name</p>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header" id="heading2">
+            <h5 class="mb-0">
+                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-controls="collapse2">
+                    Films
+                </button>
+            </h5>
+        </div>
+        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2">
+            <div class="accordion-body">
+                @foreach (Entidades.Films prop in @Model.films)
+                {
+                    <a href="@Url.Action("Films", "Detail", new {id = @prop.url.Split('/')[@prop.url.Split('/').Length-2]})">
+
+                        <span><img src="@prop.getImage()" /></span>
+                        <p>@prop.title</p>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>

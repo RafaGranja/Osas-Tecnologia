@@ -78,6 +78,34 @@
     }
 }
 
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load {
+    0% {
+        content: 'Loading';
+    }
+
+    33% {
+        content: 'Loading.';
+    }
+
+    67% {
+        content: 'Loading..';
+    }
+
+    100% {
+        content: 'Loading...';
+    }
+}
+
 
 *::-webkit-scrollbar {
     width: 10px;
@@ -109,8 +137,44 @@
 
 .container {
     max-width: fit-content;
-    padding: 0em 10rem;
+    padding: 0em 20rem;
 }
+
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: fixed;
+    top: 5rem;
+    left: 5%;
+    width: 90%;
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+a.page-link {
+    border-radius: 1em !important;
+    background-color: black;
+    color: yellow;
+    font-size: larger;
+    font-weight: 700;
+    box-shadow: 2px 2px 2px 0px white;
+}
+
+    a.page-link:hover {
+        color: black;
+        border: 3px solid var(--bs-pagination-hover-color);
+        box-shadow: 2px 2px 2px 0px var(--bs-pagination-hover-color);
+    }
+
 
 .stars, .twinkling {
     position: fixed;
@@ -136,13 +200,6 @@
     -o-animation: move-twink-back 200s linear infinite;
     -webkit-animation: move-twink-back 200s linear infinite;
     animation: move-twink-back 200s linear infinite;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    margin-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -203,6 +260,11 @@ img.people {
     object-fit: contain;
 }
 
+.div-img-detail:hover {
+    width: 100%;
+    transition-duration: 1s;
+}
+
 
 .cards {
     margin: 1em 2em;
@@ -235,32 +297,143 @@ a {
     background-color: white;
     width: -webkit-fill-available;
     height: -webkit-fill-available;
-    padding:1em;
-    border-radius:0.5em;
+    padding: 1em;
+    border-radius: 0.5em;
 }
 
-.div-details p {
-    color: black;
-}
+    .div-details p {
+        color: black;
+    }
 
-.div-details h1, .div-details h2, .div-details h3, .div-details h4 {
-    color: black;
-    font-size: 1.2em !important;
-}
+    .div-details h1, .div-details h2, .div-details h3, .div-details h4 {
+        color: black;
+        font-size: 1.2em !important;
+    }
 
-.div-details {
+.div-details-d {
     height: -webkit-fill-available;
+    margin-left: 2em;
+    background-color: white;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    padding: 1em;
+    border-radius: 0.5em;
 }
 
 .div-img {
     margin-bottom: 1em;
 }
 
-p, th, td {
-    color: white;
+.title {
+    color: yellow;
+    font-family: sans-serif;
+    font-weight: 1000;
+    font-size: 2em;
+    margin-top: 1em;
 }
+
+p, th, td {
+    color: black;
+}
+
+
+.card-detail {
+    display: flex;
+    height: max-content;
+}
+
+.div-img-detail {
+    height: max-content;
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 50%;
+    transition-duration: 1s;
+    display: flex;
+    box-shadow: 1px 1px 20px 1px white;
+    justify-content: center;
+}
+
+    .div-img-detail img {
+        height: max-content;
+        width: max-content;
+    }
 
 p.description {
     height: 10em;
     overflow: auto;
+}
+
+.div-details-d tr > td:first-child {
+    width: 10rem;
+    font-weight: 700;
+    font-size: 1.2em;
+    vertical-align: baseline;
+}
+
+.div-details-d tr > td {
+    color: black;
+    vertical-align: baseline;
+    border-top: 1px solid black;
+    padding: 0em 0em 1em 0em;
+}
+
+
+span > img {
+    object-fit: cover;
+    width: 4em;
+    height: 4em;
+    border-bottom: 1px solid white;
+    border-radius: 50%;
+}
+
+a > span {
+    width: 4em;
+    height: 4em;
+    margin-right: 1em;
+    background-color: white;
+    border-radius: 12em;
+}
+
+.accordion-body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    background-color: transparent;
+}
+
+.accordion-body a:hover {
+    box-shadow: 2px 2px 2px 0px yellow;
+    transform: scale(1.05);
+}
+
+.accordion-body a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 19em;
+    margin: 1em 1em;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 7px;
+    box-shadow: 2px 2px 2px 0px;
+    background-color: white;
+}
+
+.div-details-d table {
+    width: inherit;
+}
+
+div#accordion {
+    margin: 2em;
+}
+
+div#accordion .accordion-item {
+    margin: 1em;
+    background-color: transparent;
 }

@@ -12,10 +12,20 @@ namespace Interfaces
 {
     public class SWAPI<T>
     {
+
+        public class MinhaClasse<T>
+        {
+            public T Valor { get; set; }
+
+            public MinhaClasse(T valor)
+            {
+                Valor = valor;
+            }
+        }
+
         private string base_url {get;set;}
 
         private HttpClient http;
-        
 
         public SWAPI(string base_url)
         {
@@ -24,7 +34,7 @@ namespace Interfaces
 
             this.http = new HttpClient();
 
-            this.http.Timeout= TimeSpan.FromSeconds(120);
+            this.http.Timeout= TimeSpan.FromSeconds(5000);
 
             Console.WriteLine("Url da lista é:"+this.base_url);
 
@@ -35,94 +45,148 @@ namespace Interfaces
         {
             string url = this.base_url + "/" + id;
 
-            var response = await http.GetAsync(url);
-
-            var json = await response.Content.ReadAsStringAsync();
-
-            T ret = JsonConvert.DeserializeObject<T>(json);
-
-            return ret;
-
-        }
-
-        public async Task<T> callPage(int id)
-        {
-            string url = this.base_url + "/?page=" + id;
-
-            var response = await http.GetAsync(url);
-
-            var json = await response.Content.ReadAsStringAsync();
-
-            T ret = JsonConvert.DeserializeObject<T>(json);
-
-            return ret;
-
-        }
-
-        public async Task<T> call()
-        {
-
-            var response = await http.GetAsync(this.base_url);
-
-            var json = await response.Content.ReadAsStringAsync();
-
-            T ret = JsonConvert.DeserializeObject<T>(json);
-
-            return ret;
-
-        }
-
-        public async Task<T> call(string url)
-        {
-
-            var response = await http.GetAsync(url);
-
-            var json = await response.Content.ReadAsStringAsync();
-
-            T ret = JsonConvert.DeserializeObject<T>(json);
-
-            return ret;
-
-        }
-
-        public async Task<List<T>> call(int[] id)
-        {
-
-            List<T> ret = new List<T>();
-
-            for(int i = 0; i < id.Length; i++)
+            try
             {
-                string url = this.base_url + "/" + id[i];
 
                 var response = await http.GetAsync(url);
 
                 var json = await response.Content.ReadAsStringAsync();
 
-                ret.Add(JsonConvert.DeserializeObject<T>(json));
+                T ret = JsonConvert.DeserializeObject<T>(json);
+
+                return ret;
 
             }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Erro de requisição: {e.Message}");
+            }
 
-            return ret;
+            return default(T);
+
+
+        }
+
+        public async Task<T> callPage(int id)
+        {
+            try { 
+                string url = this.base_url + "/?page=" + id;
+
+                var response = await http.GetAsync(url);
+
+                var json = await response.Content.ReadAsStringAsync();
+
+                T ret = JsonConvert.DeserializeObject<T>(json);
+
+                return ret;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Erro de requisição: {e.Message}");
+            }
+
+            return default(T);
+
+        }
+
+        public async Task<T> call()
+        {
+            try { 
+                var response = await http.GetAsync(this.base_url);
+
+                var json = await response.Content.ReadAsStringAsync();
+
+                T ret = JsonConvert.DeserializeObject<T>(json);
+
+                return ret;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Erro de requisição: {e.Message}");
+            }
+
+            return default(T);
+
+        }
+
+        public async Task<T> call(string url)
+        {
+            try { 
+                var response = await http.GetAsync(url);
+
+                var json = await response.Content.ReadAsStringAsync();
+
+                T ret = JsonConvert.DeserializeObject<T>(json);
+
+                return ret;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Erro de requisição: {e.Message}");
+            }
+
+            return default(T);
+
+        }
+
+        public async Task<List<T>> call(int[] id)
+        {
+            try { 
+                List<T> ret = new List<T>();
+
+                for(int i = 0; i < id.Length; i++)
+                {
+                    string url = this.base_url + "/" + id[i];
+
+                    var response = await http.GetAsync(url);
+
+                    var json = await response.Content.ReadAsStringAsync();
+
+                    ret.Add(JsonConvert.DeserializeObject<T>(json));
+
+                }
+
+                return ret;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Erro de requisição: {e.Message}");
+            }
+
+            return default(List<T>);
 
         }
 
         public async Task<List<T>> call(string[] url)
         {
+            try { 
 
-            List<T> ret = new List<T>();
+                List<T> ret = new List<T>();
 
-            for (int i = 0; i < url.Length; i++)
-            {
+                if (url != null)
+                {
+                    for (int i = 0; i < url.Length; i++)
+                    {
 
-                var response = await http.GetAsync(url[i]);
+                        var response = await http.GetAsync(url[i]);
 
-                var json = await response.Content.ReadAsStringAsync();
+                        var json = await response.Content.ReadAsStringAsync();
 
-                ret.Add(JsonConvert.DeserializeObject<T>(json));
+                        ret.Add(JsonConvert.DeserializeObject<T>(json));
+
+                    }
+
+                }
+
+                return ret;
 
             }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Erro de requisição: {e.Message}");
+            }
 
-            return ret;
+            return default(List<T>);
 
         }
 
