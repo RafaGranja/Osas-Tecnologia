@@ -3,7 +3,7 @@
 # Osas Tecnologia 
 ~~~
 Projeto criado para desenvolvimento de teste 
-prático da empre Osas Tecnologia;
+prático da empresa Osas Tecnologia;
 ~~~
 
 ## Divisor 🔢
