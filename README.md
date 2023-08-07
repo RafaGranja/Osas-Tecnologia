@@ -7,7 +7,7 @@ prático da empresa Osas Tecnologia;
 ~~~
 
 ## Divisor 🔢
-  Algoritmo que recebe como parametro um numero inteiro maior que 0 e retorna todos seus divisores e dentre esses divisores, quais são primos.
+  Algoritmo que recebe como parametro um numero inteiro maior que 0 e retorna todos seus divisores e dentre esses divisores quais são primos.
 
 ## API Divisor 📡
   Algoritmo Divisor apresentado acima sendo implementado em um serviço API para ser consultado por outras aplicações.
